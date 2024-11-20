@@ -30,7 +30,7 @@
 	},
 	"config": {
 		"commitizen": {
-			"path": "node_modules/cz-conventional-changelog"
+			"path": "node_modules/cz-git"
 		}
 	},
 	"dependencies": {
@@ -47,7 +47,7 @@
 		"@typescript-eslint/parser": "^8.15.0",
 		"@vitejs/plugin-react": "^4.3.3",
 		"commitizen": "^4.3.0",
-		"cz-conventional-changelog": "^3.3.0",
+		"cz-git": "^1.11.0",
 		"eslint": "^8.17.0",
 		"eslint-config-prettier": "^8.5.0",
 		"eslint-plugin-prettier": "^4.0.0",
