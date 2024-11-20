@@ -9,12 +9,12 @@
 		"lint-eslint": "eslint -c .eslintrc.js --ext .ts,.tsx,.js src",
 		"lint-stylelint": "stylelint --config .stylelintrc.js src/**/*.{less,css,scss}",
 		"prepare": "husky install",
-		"commit": "git-cz"
+		"commit": "git pull && git add -A && git-cz && git push"
 	},
 	"husky": {
 		"hooks": {
 			"pre-commit": "lint-staged",
-			"commit-msg": "commitlint --config commitlint.config.js -E HUSKY_GIT_PARAMS"
+			"commit-msg": "commitlint --config .commitlintrc.js -E HUSKY_GIT_PARAMS"
 		}
 	},
 	"lint-staged": {
