@@ -2,8 +2,15 @@ module.exports = {
 	// 从标准配置中继承规则
 	extends: ["stylelint-config-standard", "stylelint-config-rational-order", "stylelint-config-prettier"],
 	plugins: ["stylelint-order", "stylelint-declaration-block-no-ignored-properties"],
+	customSyntax: "postcss-less",
 	// 规则配置
 	rules: {
+		"at-rule-no-unknown": [
+			true,
+			{
+				ignoreAtRules: ["tailwind"]
+			}
+		],
 		// 禁用注释前的空行规则
 		"comment-empty-line-before": null,
 		// 禁用声明前的空行规则

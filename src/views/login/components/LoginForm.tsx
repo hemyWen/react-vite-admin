@@ -15,7 +15,10 @@ const LoginForm = () => {
 				<Button onClick={() => {}} icon={<CloseCircleOutlined />}>
 					重置
 				</Button>
-				<Button type="primary" htmlType="submit" loading={loading} icon={<UserOutlined />}>
+				<Button color="primary" variant="solid" loading={loading} icon={<UserOutlined />}>
+					确认登录
+				</Button>
+				<Button color="danger" variant="solid" loading={loading} icon={<UserOutlined />}>
 					确认登录
 				</Button>
 			</Form.Item>

@@ -1,11 +1,17 @@
 import { Navigate, useRoutes } from "react-router-dom";
 import { RouteObject } from "./interface";
 import Login from "@/views/login";
+import Home from "@/views/home";
 import Error404 from "@/views/error/404";
 export const rootRouter: RouteObject[] = [
 	{
 		path: "/",
-		element: <Navigate to="/login" />
+		element: <Home />,
+		meta: {
+			requiresAuth: false,
+			title: "首页",
+			key: "home"
+		}
 	},
 	{
 		path: "/login",

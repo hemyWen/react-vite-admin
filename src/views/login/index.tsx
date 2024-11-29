@@ -1,23 +1,11 @@
-import loginLeft from "@/assets/images/login_left.png";
-import logo from "@/assets/images/logo.png";
-import LoginForm from "./components/LoginForm";
-import "./index.less";
+import "./index.css";
 const Login = () => {
 	return (
-		<div className="login-container">
-			<div className="login-box">
-				<div className="login-left">
-					<img src={loginLeft} alt="login" />
-				</div>
-				<div className="login-form">
-					<div className="login-logo">
-						<img className="logo-icon" src={logo} alt="logo" />
-						<span className="logo-text">Hm-Admin</span>
-					</div>
-					<LoginForm />
-				</div>
-			</div>
-		</div>
+		<>
+			{["首页", "学习TailwindCSS", "TailwindCSS的设计哲学", "最佳实践"].map(item => {
+				return <div className="menu">{item}</div>;
+			})}
+		</>
 	);
 };
 export default Login;
