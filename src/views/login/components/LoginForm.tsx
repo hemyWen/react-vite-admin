@@ -1,5 +1,5 @@
 import { Button, Form, Input } from "antd";
-import { UserOutlined, LockOutlined, CloseCircleOutlined } from "@ant-design/icons";
+import { UserOutlined, LockOutlined } from "@ant-design/icons";
 import { useState } from "react";
 const LoginForm = () => {
 	const [loading] = useState<boolean>(false);
@@ -12,13 +12,7 @@ const LoginForm = () => {
 				<Input.Password autoComplete="new-password" placeholder="密码：123456" prefix={<LockOutlined />} />
 			</Form.Item>
 			<Form.Item className="login-btn">
-				<Button onClick={() => {}} icon={<CloseCircleOutlined />}>
-					重置
-				</Button>
-				<Button color="primary" variant="solid" loading={loading} icon={<UserOutlined />}>
-					确认登录
-				</Button>
-				<Button color="danger" variant="solid" loading={loading} icon={<UserOutlined />}>
+				<Button className="w-full" color="primary" variant="solid" loading={loading}>
 					确认登录
 				</Button>
 			</Form.Item>
