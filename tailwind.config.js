@@ -4,10 +4,11 @@ export default {
 	theme: {
 		extend: {
 			colors: {
-				"color-primary": "var(--ant-color-primary)"
+				"color-primary": "var(--ant-color-primary)",
+				"color-text-base": "var(--ant-color-text-base)"
 			}
 		}
 	},
 	plugins: [],
-	darkMode: "class"
+	darkMode: "selector"
 };
