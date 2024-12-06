@@ -1,19 +1,21 @@
 import { Button, Form, Input } from "antd";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 const LoginForm = () => {
+	const { t } = useTranslation();
 	const [loading] = useState<boolean>(false);
 	return (
 		<Form name="basic" labelCol={{ span: 5 }} initialValues={{ remember: true }} size="large" autoComplete="off">
-			<Form.Item name="username" rules={[{ required: true, message: "请输入用户名" }]}>
-				<Input placeholder="用户名：admin / user" prefix={<UserOutlined />} />
+			<Form.Item name="username" rules={[{ required: true, message: t("login.username") }]}>
+				<Input placeholder={t("login.username")} prefix={<UserOutlined />} />
 			</Form.Item>
-			<Form.Item name="password" rules={[{ required: true, message: "请输入密码" }]}>
-				<Input.Password autoComplete="new-password" placeholder="密码：123456" prefix={<LockOutlined />} />
+			<Form.Item name="password" rules={[{ required: true, message: t("login.passwordRuleMessage") }]}>
+				<Input.Password autoComplete="new-password" placeholder={t("login.password")} prefix={<LockOutlined />} />
 			</Form.Item>
 			<Form.Item className="login-btn">
 				<Button className="w-full" color="primary" variant="solid" loading={loading}>
-					确认登录
+					{t("login.login")}
 				</Button>
 			</Form.Item>
 		</Form>
