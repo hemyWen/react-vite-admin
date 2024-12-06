@@ -1,13 +1,21 @@
 import { HashRouter } from "react-router-dom";
-import Router from "./routers";
+import Router from "@/routers";
 import { ConfigProvider, theme } from "antd";
-import { usePerferencesStore } from "./store";
+
+import { usePreferences } from "@/hooks/usePreferences";
+
+import { ANT_DESIGN_LOCALE } from "./locales/config";
 function App() {
-	const themeType = usePerferencesStore(state => state.theme);
+	const { isLight, language } = usePreferences();
+	const getAntdLocale = () => {
+		return ANT_DESIGN_LOCALE[language];
+	};
+
 	return (
 		<HashRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
 			<ConfigProvider
-				theme={{ cssVar: { key: "hm" }, algorithm: themeType === "light" ? theme.defaultAlgorithm : theme.darkAlgorithm }}
+				locale={getAntdLocale()}
+				theme={{ cssVar: { key: "hm" }, algorithm: isLight ? theme.defaultAlgorithm : theme.darkAlgorithm }}
 			>
 				<Router />
 			</ConfigProvider>

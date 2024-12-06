@@ -1,11 +1,16 @@
+/*
+ * @Date: 2024-12-02 17:26:54
+ * @LastEditTime: 2024-12-06 15:36:18
+ * @Description:切换主题组件
+ */
+
 import { useEffect } from "react";
-
 import { SunOutlined, MoonOutlined } from "@ant-design/icons";
-import { usePerferencesStore } from "@/store";
+import { usePreferencesStore } from "@/store";
 
-export default function Theme() {
-	const theme = usePerferencesStore(state => state.theme);
-	const changeSiteTheme = usePerferencesStore(state => state.changeSiteTheme);
+export default function ThemeButton() {
+	const theme = usePreferencesStore(state => state.theme);
+	const changeSiteTheme = usePreferencesStore(state => state.changeSiteTheme);
 	useEffect(() => {
 		if (theme === "dark") {
 			document.documentElement.classList.add("dark");

@@ -1,1 +1,1 @@
-export * from "./perferences";
+export * from "./preferences";
