@@ -1,6 +1,6 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
-import { TOKEN } from "@/constants/config";
+import { TOKEN } from "@/config/config";
 import { LanguageType } from "@/locales/config";
 //主题类型
 export type ThemeType = "light" | "dark";
