@@ -2,6 +2,7 @@ import { message } from "@/utils/message";
 import { getLocalInfo, removeLocalInfo } from "@/utils/local";
 import axios from "axios";
 import AxiosRequest from "./request";
+import { TOKEN } from "@/config/config";
 
 /**
  * 创建请求
@@ -77,3 +78,27 @@ const handleError = (error: string, content?: string) => {
 
 export { creteRequest };
 export type * from "./types";
+
+// 生成环境所用的接口
+const prefixUrl = import.meta.env.VITE_BASE_URL as string;
+console.log("==========", prefixUrl);
+const baseURL = prefixUrl + "/api";
+
+// 请求配置
+export const request = creteRequest(baseURL, TOKEN);
+
+// 创建多个请求
+// export const newRequest = creteRequest('/test', TOKEN);
+
+/**
+ * 取消请求
+ * @param url - 链接
+ */
+export const cancelRequest = (url: string | string[]) => {
+	return request.cancelRequest(url);
+};
+
+/** 取消全部请求 */
+export const cancelAllRequest = () => {
+	return request.cancelAllRequest();
+};

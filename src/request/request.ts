@@ -14,6 +14,7 @@ class AxiosRequest {
 		this.instance = axios.create(config);
 		// 初始化存放取消请求控制器Map
 		this.abortControllerMap = new Map();
+		console.log(11111111);
 		this.interceptorsObj = config.interceptors;
 		// 拦截器执行顺序 接口请求 -> 实例请求 -> 全局请求 -> 实例响应 -> 全局响应 -> 接口响应
 		this.instance.interceptors.request.use(
@@ -38,7 +39,6 @@ class AxiosRequest {
 						url += `#${key}=${obj[key]}`;
 					}
 				}
-
 				// 如果存在则删除该请求
 				if (this.abortControllerMap.get(url)) {
 					console.warn("取消重复请求：", url);
