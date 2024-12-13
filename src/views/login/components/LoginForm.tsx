@@ -3,15 +3,37 @@ import { UserOutlined, LockOutlined } from "@ant-design/icons";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import type { FormProps } from "antd";
-import { LoginData } from "../model";
-import { login } from "@/api/login";
+import { LoginData } from "@/api/login/model";
+import { useUserStore } from "@/store/user";
+import { useTokenStore } from "@/store/token";
+import { useNavigate, useSearchParams } from "react-router-dom";
+import { fetchLogin } from "@/api/login";
+
 const LoginForm = () => {
 	const { t } = useTranslation();
 	const [loading, setLoading] = useState<boolean>(false);
+	const [searchParams] = useSearchParams();
+	const navigate = useNavigate();
+	const getUserInfo = useUserStore(state => state.getUserInfo);
 	const handleFinish: FormProps["onFinish"] = async (values: LoginData) => {
+		setLoading(true);
 		try {
-			const { code, data } = await login(values);
-			console.log(code, data);
+			const { data } = await fetchLogin(values);
+			useTokenStore(state => state.setToken(data));
+			const promises = [];
+			promises.push(getUserInfo());
+			const results = await Promise.allSettled(promises);
+			const hasError = results.some(result => result.status === "rejected");
+			if (hasError) {
+				navigate("/500");
+			} else {
+				const redirect = searchParams.get("redirect");
+				if (redirect) {
+					navigate(`/${redirect.slice(1)}`);
+				} else {
+					navigate("/");
+				}
+			}
 		} finally {
 			setLoading(false);
 		}

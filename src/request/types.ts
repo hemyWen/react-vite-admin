@@ -15,7 +15,7 @@ export interface RequestInterceptors<T> {
 	requestInterceptors?: (config: InternalAxiosRequestConfig) => InternalAxiosRequestConfig;
 	requestInterceptorsCatch?: (err: RequestCancel) => void;
 	// 响应拦截
-	responseInterceptors?: (config: T) => T;
+	responseInterceptors?: (config: T) => T | Promise<T>;
 	responseInterceptorsCatch?: (err: RequestCancel) => void;
 }
 // 自定义传入的参数

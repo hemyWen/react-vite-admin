@@ -1,10 +1,10 @@
-import type { LoginData, LoginResult } from "@/views/login/model";
+import type { LoginData, LoginResult } from "@/api/login/model";
 import { request } from "@/request";
 /**
  * 登录
  * @param data - 请求数据
  */
-export function login(data: LoginData) {
+export function fetchLogin(data: LoginData) {
 	return request.post<LoginResult>("/login/v2", data);
 }
 /**

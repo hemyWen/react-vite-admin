@@ -23,6 +23,15 @@ export const rootRouter: RouteObject[] = [
 		}
 	},
 	{
+		path: "/500",
+		element: <Error404 />,
+		meta: {
+			requiresAuth: false,
+			title: "500页面",
+			key: "500"
+		}
+	},
+	{
 		path: "/404",
 		element: <Error404 />,
 		meta: {
