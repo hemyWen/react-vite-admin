@@ -15,11 +15,12 @@ const LoginForm = () => {
 	const [searchParams] = useSearchParams();
 	const navigate = useNavigate();
 	const getUserInfo = useUserStore(state => state.getUserInfo);
+	const setToken = useTokenStore(state => state.setToken);
 	const handleFinish: FormProps["onFinish"] = async (values: LoginData) => {
 		setLoading(true);
 		try {
 			const { data } = await fetchLogin(values);
-			useTokenStore(state => state.setToken(data));
+			setToken(data);
 			const promises = [];
 			promises.push(getUserInfo());
 			const results = await Promise.allSettled(promises);

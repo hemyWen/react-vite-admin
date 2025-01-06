@@ -43,7 +43,6 @@ function creteRequest(url: string) {
 
 				// 错误处理
 				if (data?.code !== 200) {
-					console.log("----------");
 					message.error(data.message || "服务器错误");
 					return Promise.reject(res);
 				}
